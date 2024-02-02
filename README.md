@@ -1,2 +1,2 @@
 # MADS
-Master degree Applied Data Science with Python through Coursera
+Master degree of University of Michigan specialization: Applied Data Science with Python through Coursera
