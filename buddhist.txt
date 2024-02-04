@@ -1,0 +1,122 @@
+Buddhist universities and colleges in the United States
+From Wikipedia, the free encyclopedia
+Jump to navigationJump to search
+
+This article needs additional citations for verification. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed.
+Find sources: "Buddhist universities and colleges in the United States" – news · newspapers · books · scholar · JSTOR (December 2009) (Learn how and when to remove this template message)
+There are several Buddhist universities in the United States. Some of these have existed for decades and are accredited. Others are relatively new and are either in the process of being accredited or else have no formal accreditation. The list includes:
+
+Dhammakaya Open University – located in Azusa, California, part of the Thai Wat Phra Dhammakaya[1]
+Dharmakirti College – located in Tucson, Arizona Now called Awam Tibetan Buddhist Institute (http://awaminstitute.org/)
+Dharma Realm Buddhist University – located in Ukiah, California
+Ewam Buddhist Institute – located in Arlee, Montana
+Naropa University is located in Boulder, Colorado (Accredited by the Higher Learning Commission)
+Institute of Buddhist Studies – located in Berkeley, California
+Maitripa College – located in Portland, Oregon
+Soka University of America – located in Aliso Viejo, California
+University of the West – located in Rosemead, California
+Won Institute of Graduate Studies – located in Glenside, Pennsylvania
+References[edit]
+^ Banchanon, Phongphiphat (3 February 2015). รู้จัก "เครือข่ายธรรมกาย" [Getting to know the Dhammakaya network]. Forbes Thailand (in Thai). Retrieved 11 November 2016.
+External links[edit]
+List of Buddhist Universities and Colleges in the world
+
+
+
+m_list=[]
+pattern = """
+(?P<host>.*)  #find the host
+(\ -\ )  #an indicator of the -
+(?P<user_name>\w*)  #find the username
+(\ \[)  #separator for the time
+(?P<time>.*)  #find the time
+(\]\ ")  #separator for the request
+(?P<request>.*)
+("\ )
+(?P<others>\w*)  #others
+"""
+def logs():
+    with open("assets/logdata.txt", "r") as file:
+        logdata = file.read()
+
+    for item in re.finditer(pattern,logdata,re.VERBOSE):
+        result = item.groupdict()
+        if result['user_name'] is None:
+            result['user_name'] = '-'
+        if "POST" in result['request']:
+            one_item={'host': result['host'],
+                      'user_name': result['user_name'],
+                      'time': result['time'],
+                      'request': result['request']}
+            m_list.append(one_item)
+    return m_list,result
+
+
+
+    ////
+    import re
+
+m_list=[]
+pattern = """
+(?P<host>.*)  #find the host
+(\ -\ )  #an indicator of the -
+(?P<user_name>.*)  #find the username
+(\ \[)  #separator for the time
+(?P<time>.*)  #find the time
+(\]\ ")  #separator for the request
+(?P<request>.*)
+("\ )
+(?P<others>\d*(?=\s))  #others
+"""
+def logs():
+    with open("assets/logdata.txt", "r") as file:
+        logdata = file.read()
+
+    for item in re.finditer(pattern,logdata,re.VERBOSE):
+        result = item.groupdict()
+        if result['user_name'] is None:
+            result['user_name'] = '-'
+        if "POST" in result['request']:
+            one_item={'host': result['host'],
+                      'user_name': result['user_name'],
+                      'time': result['time'],
+                      'request': result['request']}
+            m_list.append(one_item)
+    return m_list,result
+
+
+
+    # YOUR CODE HERE
+    #raise NotImplementedError()
+
+    //////
+
+    import re
+
+m_list=[]
+pattern = """
+(?P<host>.*)  #find the host
+([\ -\ ].*)  #an indicator of the -
+(?P<user_name>.*)  #find the username
+(\ \[)  #separator for the time
+(?P<time>.*)  #find the time
+(\]\ ")  #separator for the request
+(?P<request>.*)
+("\ )
+(?P<others>\d*)  #others
+"""
+def logs():
+    with open("assets/logdata.txt", "r") as file:
+        logdata = file.read()
+
+    for item in re.finditer(pattern,logdata,re.VERBOSE):
+        result = item.groupdict()
+        if result['user_name'] is None:
+            result['user_name'] = '-'
+        if "POST" in result['request']:
+            one_item={'host': result['host'],
+                      'user_name': result['user_name'],
+                      'time': result['time'],
+                      'request': result['request']}
+            m_list.append(one_item)
+    return m_list
